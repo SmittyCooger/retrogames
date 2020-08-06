@@ -1,0 +1,81 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4 août 2020, 10:49:02
+    Author     : HAMDI
+*/
+@font-face {
+  font-family: Sriracha;
+  src: url(fonts/Sriracha-Regular.ttf);
+}
+
+.intro_pane{
+    -fx-background-color: black;
+}
+
+.main_pane{
+    -fx-background-image: url(background.jpg);
+}
+
+.menu{
+    -fx-spacing: 5px;
+}
+
+.menu_buttons{
+    -fx-background-color: transparent;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-border-color: black;
+    -fx-border-width: 3;
+    -fx-font-family: Sriracha;
+    -fx-font-size: 15px;
+}
+.tick{
+    -fx-background-color: transparent;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-border-width: 3;
+    -fx-border-color: black;
+}
+
+.players{
+    -fx-font-family: Sriracha;
+    -fx-font-size: 20px;
+}
+
+.config_components{
+    -fx-font-family: Sriracha;
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-width: 3;
+    -fx-border-radius: 10;
+}
+
+.positions{
+    -fx-background-color: transparent;
+}
+
+.reset{
+    -fx-background-color: transparent;
+    -fx-border-radius: 60;
+    -fx-border-weight: 3;
+    -fx-border-color: black
+}
+
+.announcement{
+    -fx-font-family: Sriracha;
+    -fx-font-size: 20px;
+}
+
+.help{
+    -fx-background-color: transparent;
+    -fx-font-family: Sriracha;
+    -fx-font-size: 14px;
+}
+
+.titels{
+    -fx-font-size: 20px;
+}

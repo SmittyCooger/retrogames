@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="500.0" styleClass="main_pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="retro.games.tictactoe.ui.MainScreenController">
+   <children>
+      <ImageView fx:id="back" fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="5.0" onMouseClicked="#handleBackScreen" pickOnBounds="true" preserveRatio="true" style="visibility: false;" visible="false">
+         <image>
+            <Image url="@back-arrow.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sound_on" fitHeight="40.0" fitWidth="40.0" layoutX="456.0" layoutY="5.0" onMouseClicked="#handleSound_On" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@sound-on.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sound_off" fitHeight="40.0" fitWidth="40.0" layoutX="456.0" layoutY="5.0" onMouseClicked="#handleSound_Off" pickOnBounds="true" preserveRatio="true" style="visibility: false;">
+         <image>
+            <Image url="@sound-off.png" />
+         </image>
+      </ImageView>
+      <StackPane fx:id="screen_holder" layoutX="72.0" layoutY="53.0" prefHeight="359.0" prefWidth="427.0">
+         <children>
+            <AnchorPane id="0" fx:id="startMenu" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <VBox layoutX="118.0" layoutY="132.0" prefHeight="200.0" prefWidth="150.0" styleClass="menu">
+                     <children>
+                        <Button fx:id="continue_game" disable="true" mnemonicParsing="false" onAction="#continueGame" prefHeight="40.0" prefWidth="150.0" styleClass="menu_buttons" text="Continue">
+                           <font>
+                              <Font name="Berlin Sans FB Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="start" mnemonicParsing="false" onAction="#startGame" prefHeight="40.0" prefWidth="150.0" styleClass="menu_buttons" text="Start">
+                           <font>
+                              <Font name="Berlin Sans FB Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="help" mnemonicParsing="false" onAction="#handleHelp" prefHeight="40.0" prefWidth="150.0" styleClass="menu_buttons" text="Help">
+                           <font>
+                              <Font name="Berlin Sans FB Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="exit" mnemonicParsing="false" onAction="#exitGame" prefHeight="40.0" prefWidth="150.0" styleClass="menu_buttons" text="Exit">
+                           <font>
+                              <Font name="Berlin Sans FB Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <ImageView fx:id="head_line" fitHeight="50.0" fitWidth="225.0" layoutX="79.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@headline.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane id="1" fx:id="configPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <GridPane alignment="CENTER" layoutX="2.0" layoutY="72.0" prefHeight="149.0" prefWidth="390.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextField fx:id="player1Name" alignment="CENTER" promptText="Name" styleClass="config_components">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="player2Name" alignment="CENTER" promptText="Name" styleClass="config_components" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <ChoiceBox fx:id="player1Type" disable="true" prefWidth="150.0" styleClass="config_components" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <ChoiceBox fx:id="player2Type" prefWidth="150.0" styleClass="config_components" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="1">
+                           <children>
+                              <RadioButton mnemonicParsing="false" onAction="#handleTokenO" selected="true" text="O">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="player1Token" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton mnemonicParsing="false" onAction="#handleTokenX" text="X" toggleGroup="$player1Token" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <RadioButton fx:id="player2Otoken" disable="true" mnemonicParsing="false" text="O">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="player2Token" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="player2Xtoken" disable="true" mnemonicParsing="false" selected="true" text="X" toggleGroup="$player2Token" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="23.0" prefHeight="40.0" prefWidth="90.0" styleClass="players" text="Player 1 :" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="246.0" layoutY="23.0" prefHeight="40.0" prefWidth="90.0" styleClass="players" text="Player 2 :" textAlignment="JUSTIFY" />
+                  <Button layoutX="170.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleVerifyConfig" styleClass="tick">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@tick.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane id="2" fx:id="game" prefHeight="200.0" prefWidth="200.0" styleClass="board" visible="false">
+               <children>
+                  <Pane fx:id="board" layoutX="14.0">
+                     <children>
+                        <ImageView fitHeight="340.0" fitWidth="350.0" onDragDetected="#handleTurn" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@board.png" />
+                           </image>
+                        </ImageView>
+                        <Button id="2" layoutX="127.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="1" layoutX="22.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="3" layoutX="231.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="5" layoutX="129.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="6" layoutX="232.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="4" layoutX="23.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="7" layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="8" layoutX="129.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="9" layoutX="233.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <ImageView fx:id="reset" fitHeight="26.0" fitWidth="26.0" layoutX="387.0" layoutY="14.0" onMouseClicked="#handleReset" pickOnBounds="true" preserveRatio="true" styleClass="reset">
+                     <image>
+                        <Image url="@reset.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="helpPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" layoutX="126.0" layoutY="12.0" prefHeight="18.0" prefWidth="150.0" text="Desctiption" textAlignment="CENTER">
+                     <styleClass>
+                        <String fx:value="help" />
+                        <String fx:value="titels" />
+                     </styleClass>
+                  </Label>
+                  <Label layoutX="4.0" layoutY="36.0" prefHeight="142.0" prefWidth="390.0" styleClass="help" text="Tic-tac-toe, noughts and crosses, or Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label alignment="CENTER" layoutX="126.0" layoutY="179.0" prefHeight="18.0" prefWidth="150.0" text="Software info" textAlignment="CENTER">
+                     <styleClass>
+                        <String fx:value="help" />
+                        <String fx:value="titels" />
+                     </styleClass>
+                  </Label>
+                  <Label layoutX="4.0" layoutY="200.0" prefHeight="90.0" prefWidth="390.0" styleClass="help" text="This game is a &quot;SESAME TECH-LABS&quot; production developped by sesame university students from class INGTA1B 2019/2020." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label alignment="CENTER" layoutX="121.0" layoutY="276.0" prefHeight="18.0" prefWidth="150.0" text="Made by" textAlignment="CENTER">
+                     <styleClass>
+                        <String fx:value="help" />
+                        <String fx:value="titels" />
+                     </styleClass>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="308.0" prefHeight="26.0" prefWidth="363.0" styleClass="help" text="Helali Rania &amp; Jandoubi Hamdi" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+      <Label fx:id="announcement" alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="25.0" prefHeight="40.0" prefWidth="340.0" styleClass="announcement" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
