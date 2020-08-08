@@ -210,7 +210,7 @@ public class MainScreenController implements Initializable {
      */
     @FXML
     void handleVerifyConfig(ActionEvent event) {
-        if (this.player1Name.getText().isEmpty() || this.player2Name.getText().isEmpty() || this.player1Name.getText().equals(this.player2Name.getText())) {
+        if (this.player1Name.getCharacters().toString().isEmpty() || this.player2Name.getCharacters().toString().isEmpty() || this.player1Name.getText().equals(this.player2Name.getText())) {
             alert.setContentText("The player names must be fiiled with two different values!");
             alert.showAndWait();
         } else {
@@ -293,12 +293,15 @@ public class MainScreenController implements Initializable {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (oldValue.intValue() == 0) {
                     MainScreenController.this.player2Name.setText("AI");
+                    MainScreenController.this.player2Name.setDisable(true);
                 } else {
                     MainScreenController.this.player2Name.setText(null);
+                    MainScreenController.this.player2Name.setDisable(false);
                 }
             }
         });
-        player2Name.setText("AI");
+        this.player2Name.setText("AI");
+        this.player2Name.setDisable(true);
         this.alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
     }
