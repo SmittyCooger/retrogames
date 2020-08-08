@@ -5,7 +5,7 @@
  */
 package retro.games.tictactoe.exceptions;
 
-import retro.games.tictactoe.utility.GameConstants;
+import retro.games.tictactoe.utility.GameUtility;
 
 /**
  *
@@ -18,7 +18,7 @@ public class InvalidArgumentsException extends Exception {
      * detail message.
      */
     public InvalidArgumentsException() {
-        super("Invalid arguments passed to the command\n"+GameConstants.help());
+        super("Invalid arguments passed to the command\n"+GameUtility.help());
     }
 
     /**

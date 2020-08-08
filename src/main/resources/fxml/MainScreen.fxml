@@ -142,47 +142,47 @@
                               <Image url="@board.png" />
                            </image>
                         </ImageView>
-                        <Button id="2" layoutX="127.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                        <Button id="2" layoutX="127.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="80.0" styleClass="positions">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button id="1" layoutX="22.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                        <Button id="1" layoutX="25.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="80.0" styleClass="positions">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button id="3" layoutX="231.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                        <Button id="3" layoutX="231.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="80.0" styleClass="positions">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button id="5" layoutX="129.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                        <Button id="5" layoutX="129.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="80.0" styleClass="positions">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button id="6" layoutX="232.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                        <Button id="6" layoutX="232.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="80.0" styleClass="positions">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button id="4" layoutX="23.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                        <Button id="4" layoutX="26.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="80.0" styleClass="positions">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button id="7" layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                        <Button id="7" layoutX="26.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="80.0" styleClass="positions">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button id="8" layoutX="129.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                        <Button id="8" layoutX="129.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="80.0" styleClass="positions">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button id="9" layoutX="233.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="85.0" styleClass="positions">
+                        <Button id="9" layoutX="233.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleTurn" prefHeight="75.0" prefWidth="80.0" styleClass="positions">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

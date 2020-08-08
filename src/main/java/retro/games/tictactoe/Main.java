@@ -6,7 +6,7 @@
 package retro.games.tictactoe;
 
 import retro.games.tictactoe.exceptions.InvalidArgumentsException;
-import retro.games.tictactoe.utility.GameConstants;
+import retro.games.tictactoe.utility.GameUtility;
 
 /**
  *

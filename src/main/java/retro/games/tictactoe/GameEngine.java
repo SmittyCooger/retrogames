@@ -5,15 +5,15 @@ import java.util.Set;
 
 import retro.games.tictactoe.config.GameConfig;
 import retro.games.tictactoe.exceptions.PositionTakenException;
-import retro.games.tictactoe.utility.GameConstants;
+import retro.games.tictactoe.utility.GameUtility;
 
 public class GameEngine {
 
     public static final GameManager GM = GameManager.getInstance();
-    public static final HashSet<HashSet<Integer>> WINNING_LINES = GameConstants.getWinningLines();
-    private static HashSet<Integer> takenPlaces;
-    private static HashSet<Integer> Os = new HashSet<Integer>();
-    private static HashSet<Integer> Xs = new HashSet<Integer>();
+    public static final HashSet<HashSet<Integer>> WINNING_LINES = GameUtility.getWinningLines();
+    public static HashSet<Integer> Os = new HashSet<Integer>();
+    public static HashSet<Integer> Xs = new HashSet<Integer>();
+    public static HashSet<Integer> takenPlaces;
     private static int boardSize;
     
 

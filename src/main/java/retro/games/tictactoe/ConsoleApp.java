@@ -1,10 +1,12 @@
 package retro.games.tictactoe;
 
 import java.util.Scanner;
+import retro.games.tictactoe.config.AIPlayer;
+import retro.games.tictactoe.config.GameConfig;
 
 import retro.games.tictactoe.config.Player;
 import retro.games.tictactoe.exceptions.PositionTakenException;
-import retro.games.tictactoe.utility.GameConstants;
+import retro.games.tictactoe.utility.GameUtility;
 
 public class ConsoleApp {
 
@@ -12,14 +14,27 @@ public class ConsoleApp {
     static Scanner sc = new Scanner(System.in);
 
     public static void init() {
-        GameEngine.GM.start(null);
+        System.out.println("Choisir votre adversaire :");
+        System.out.println("1) Humain");
+        System.out.println("2) Computer");
+        int decision = sc.nextInt();
+        GameConfig config = new GameConfig();
+        if (decision == 2) {
+            config.setPlayer("Player2", new AIPlayer('X'));
+        }
+        GameEngine.GM.start(config);
     }
 
     public static void nextTurn() throws PositionTakenException {
         int p;
+
         Player player = GameEngine.GM.getCurrentPlayer();
-        System.out.println(String.format(GameConstants.PLAYERSTURN, player.getName()));
-        p = sc.nextInt();
+        System.out.println(String.format(GameUtility.PLAYERSTURN, player.getName()));
+        if (player instanceof AIPlayer) {
+            p = ((AIPlayer) player).calculateNextMove(GameEngine.Xs, GameEngine.Os, GameUtility.getAvailablePosition(GameEngine.takenPlaces));
+        } else {
+            p = sc.nextInt();
+        }
 
         while (p < 1 || p > 9) {
             System.out.println("Plz enter a valid position!!");
@@ -63,5 +78,9 @@ public class ConsoleApp {
         }
         DrawBoard();
         System.out.println(GameEngine.GM.displayResults());
+    }
+    
+    public static void main(String[] args) {
+        main();
     }
 }

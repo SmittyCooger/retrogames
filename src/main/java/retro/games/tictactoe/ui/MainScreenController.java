@@ -5,13 +5,13 @@
  */
 package retro.games.tictactoe.ui;
 
-import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,11 +30,13 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import retro.games.tictactoe.GameEngine;
+import retro.games.tictactoe.GameManager;
 import retro.games.tictactoe.GameStatus;
+import retro.games.tictactoe.config.AIPlayer;
 import retro.games.tictactoe.config.Player;
 import retro.games.tictactoe.exceptions.PositionTakenException;
 import retro.games.tictactoe.utility.ConfigUtility;
-import retro.games.tictactoe.utility.GameConstants;
+import retro.games.tictactoe.utility.GameUtility;
 
 /**
  * FXML Controller class
@@ -58,7 +60,7 @@ public class MainScreenController implements Initializable {
 
     @FXML
     private AnchorPane game;
-    
+
     @FXML
     private AnchorPane helpPane;
 
@@ -184,10 +186,11 @@ public class MainScreenController implements Initializable {
             case 2:
                 this.board.setDisable(false);
                 this.announcement.setText(null);
-                if(GameEngine.GM.getStatus() == GameStatus.InProcess)
+                if (GameEngine.GM.getStatus() == GameStatus.InProcess) {
                     this.continue_game.setDisable(false);
-                else
+                } else {
                     this.continue_game.setDisable(true);
+                }
                 this.game.setVisible(false);
                 break;
             case 3:
@@ -241,17 +244,29 @@ public class MainScreenController implements Initializable {
             StringBuilder sb = new StringBuilder("fxml/");
             sb.append(GameEngine.GM.getCurrentPlayer().getToken() == 'X' ? "X.png" : "O.png");
             ImageView token = new ImageView(sb.toString());
-            token.setFitWidth(80);
+            token.setFitWidth(75);
             token.setFitHeight(70);
             pos.setGraphic(token);
             GameEngine.executeTurn(Integer.parseInt(pos.getId()));
             setAnnouncement();
+            Player player2 = GameEngine.GM.getConfig().getPlayer("Player2");
+            if (!GameEngine.GM.matchHasEnded() && player2.getType() == Player.PlayerType.COMPUTER) {
+                int aiMove = ((AIPlayer)player2).calculateNextMove(player2.getToken() == 'X' ? GameEngine.Xs : GameEngine.Os, player2.getToken() == 'X' ? GameEngine.Os : GameEngine.Xs, GameUtility.getAvailablePosition(GameEngine.takenPlaces));
+                pos = getButtonById(aiMove);
+                sb.replace(5, sb.length(), "");
+                sb.append(player2.getToken() == 'X' ? "X.png" : "O.png");
+                token = new ImageView(sb.toString());
+                token.setFitWidth(75);
+                token.setFitHeight(70);
+                pos.setGraphic(token);
+                GameEngine.executeTurn(Integer.parseInt(pos.getId()));
+                setAnnouncement();
+            }
         } catch (PositionTakenException ex) {
             alert.setAlertType(Alert.AlertType.INFORMATION);
             alert.setContentText(ex.getMessage());
             alert.showAndWait();
         }
-
     }
 ////////////////////////////////////////////////
 
@@ -273,6 +288,17 @@ public class MainScreenController implements Initializable {
         this.player2Type.getItems().addAll(Player.PlayerType.HUMAN.toString(), Player.PlayerType.COMPUTER.toString());
         this.player1Type.getSelectionModel().select(0);
         this.player2Type.getSelectionModel().select(1);
+        this.player2Type.getSelectionModel().selectedIndexProperty().addListener(new javafx.beans.value.ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (oldValue.intValue() == 0) {
+                    MainScreenController.this.player2Name.setText("AI");
+                } else {
+                    MainScreenController.this.player2Name.setText(null);
+                }
+            }
+        });
+        player2Name.setText("AI");
         this.alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
     }
@@ -295,7 +321,7 @@ public class MainScreenController implements Initializable {
         }
 
         if (!GameEngine.GM.matchHasEnded()) {
-            this.announcement.setText(String.format(GameConstants.PLAYERSTURN, GameEngine.GM.getCurrentPlayer().getName()));
+            this.announcement.setText(String.format(GameUtility.PLAYERSTURN, GameEngine.GM.getCurrentPlayer().getName()));
         } else {
             this.announcement.setText(GameEngine.GM.displayResults());
             this.board.setDisable(true);
@@ -309,5 +335,10 @@ public class MainScreenController implements Initializable {
             }
         }
         GameEngine.GM.resetGame();
+    }
+
+    private Button getButtonById(int pos) {
+        StringBuilder id = new StringBuilder("#").append(pos);
+        return (Button)this.board.lookup(id.toString());
     }
 }

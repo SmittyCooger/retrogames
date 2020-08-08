@@ -3,7 +3,7 @@ package retro.games.tictactoe.utility;
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class GameConstants {
+public class GameUtility {
 
     public static String WELCOME = "Welcome to TicTacToe !";
     public static String DIM_ENTRY = "Please enter board size (%d): ";
@@ -33,5 +33,11 @@ public class GameConstants {
                 .append("\t-ui\texecute in UI mode(default).\n")
                 .append("\t-help\tdisplay this help screen.\n");
         return sb.toString();
+    }
+    
+    public static HashSet<Integer> getAvailablePosition(HashSet<Integer> takenPositions){
+        HashSet<Integer> free = new HashSet<>(Arrays.asList(new Integer[]{1,2,3,4,5,6,7,8,9}));
+        free.removeAll(takenPositions);
+        return free;
     }
 }
