@@ -246,8 +246,8 @@ public class MainScreenController implements Initializable {
             ImageView token = new ImageView(sb.toString());
             token.setFitWidth(75);
             token.setFitHeight(70);
-            pos.setGraphic(token);
             GameEngine.executeTurn(Integer.parseInt(pos.getId()));
+            pos.setGraphic(token);
             setAnnouncement();
             Player player2 = GameEngine.GM.getConfig().getPlayer("Player2");
             if (!GameEngine.GM.matchHasEnded() && player2.getType() == Player.PlayerType.COMPUTER) {
